@@ -1,0 +1,72 @@
+[gd_scene load_steps=11 format=3 uid="uid://cw5r8ovhfdswy"]
+
+[ext_resource type="Script" path="res://scenes/collectable.gd" id="1_3np36"]
+[ext_resource type="Texture2D" uid="uid://cusvvmu01v1bx" path="res://craftpix-net-362692-free-green-zone-tileset-pixel-art/4 Animated objects/Money.png" id="1_ewcie"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rbklj"]
+atlas = ExtResource("1_ewcie")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qbnlr"]
+atlas = ExtResource("1_ewcie")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hgaak"]
+atlas = ExtResource("1_ewcie")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_quvsf"]
+atlas = ExtResource("1_ewcie")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a4e7u"]
+atlas = ExtResource("1_ewcie")
+region = Rect2(96, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_naosm"]
+atlas = ExtResource("1_ewcie")
+region = Rect2(120, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pi3q0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rbklj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qbnlr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hgaak")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_quvsf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a4e7u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_naosm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hbks7"]
+
+[node name="collectable" type="Area2D"]
+position = Vector2(202, 115)
+script = ExtResource("1_3np36")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-0.999998, 0.999998)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_pi3q0")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_hbks7")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

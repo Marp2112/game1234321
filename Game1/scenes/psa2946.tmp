@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://b3eyap30nh88n"]
+
+[ext_resource type="Script" path="res://scenes/psari_black.gd" id="1_3fruh"]
+[ext_resource type="Texture2D" uid="uid://b0dvs5shl25x5" path="res://player assets/black/blackfish.png" id="1_jp8nn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u1byx"]
+radius = 5.0
+
+[node name="PsariBlack" type="CharacterBody2D"]
+script = ExtResource("1_3fruh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(35, 0)
+rotation = 1.55509
+scale = Vector2(0.438462, 0.438462)
+texture = ExtResource("1_jp8nn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_u1byx")
+disabled = true

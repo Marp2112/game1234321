@@ -1,0 +1,216 @@
+[gd_scene load_steps=19 format=3 uid="uid://dy4i8m5glyuw2"]
+
+[ext_resource type="Script" path="res://scenes/player.gd" id="1_xjr5f"]
+[ext_resource type="Texture2D" uid="uid://bmyfelorew620" path="res://player assets/idleL.png" id="3_2kfb8"]
+[ext_resource type="Texture2D" uid="uid://cxouay1s8tsy7" path="res://player assets/batchiidlebeta2.png" id="4_k2sw4"]
+[ext_resource type="Texture2D" uid="uid://c21o2f70biaq7" path="res://player assets/swordequipped.png" id="4_t8s62"]
+[ext_resource type="Texture2D" uid="uid://c44d1yy53pv8t" path="res://player assets/black/swordequippedblack.png" id="5_7y8w8"]
+[ext_resource type="Texture2D" uid="uid://ofqjxsrow8cg" path="res://player assets/idleLsword.png" id="5_ijrg4"]
+[ext_resource type="Texture2D" uid="uid://f2e6wsbmx6fs" path="res://player assets/runbatchiL.png" id="5_lyxt2"]
+[ext_resource type="Texture2D" uid="uid://72gbs7x85ifp" path="res://player assets/runbatchi.png" id="7_ia6lq"]
+[ext_resource type="Texture2D" uid="uid://cpedjahdx2snj" path="res://player assets/black/idleLswordblack.png" id="7_re1xh"]
+[ext_resource type="Texture2D" uid="uid://g3txa3qwuino" path="res://player assets/runsword.png" id="8_74khq"]
+[ext_resource type="Texture2D" uid="uid://cwf6s8m8nwx0v" path="res://player assets/runbatchiLswoed.png" id="9_u0f2d"]
+[ext_resource type="Texture2D" uid="uid://c25fwdmkpaqip" path="res://player assets/black/runsword.png" id="11_4dfga"]
+[ext_resource type="Texture2D" uid="uid://bbqftrrpudxjy" path="res://player assets/black/runbatchiLblack.png" id="13_i6bjv"]
+[ext_resource type="Texture2D" uid="uid://b0dvs5shl25x5" path="res://player assets/black/blackfish.png" id="14_qhhle"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1bigl"]
+height = 66.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i7d7g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_k2sw4")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_2kfb8")
+}],
+"loop": true,
+"name": &"idleL",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_t8s62")
+}],
+"loop": true,
+"name": &"idlesword",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_7y8w8")
+}],
+"loop": true,
+"name": &"idleswordB",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ijrg4")
+}],
+"loop": true,
+"name": &"idleswordL",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_re1xh")
+}],
+"loop": true,
+"name": &"idleswordLB",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_k2sw4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ia6lq")
+}],
+"loop": true,
+"name": &"running",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_2kfb8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_lyxt2")
+}],
+"loop": true,
+"name": &"runningL",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_t8s62")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_74khq")
+}],
+"loop": true,
+"name": &"runningsword",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_4dfga")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_7y8w8")
+}],
+"loop": true,
+"name": &"runningswordB",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ijrg4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_u0f2d")
+}],
+"loop": true,
+"name": &"runningswordL",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_re1xh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_i6bjv")
+}],
+"loop": true,
+"name": &"runningswordLB",
+"speed": 15.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nl6ug"]
+radius = 8.0
+height = 66.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kqtmr"]
+radius = 23.0217
+
+[node name="player" type="CharacterBody2D"]
+script = ExtResource("1_xjr5f")
+
+[node name="PlayerCollider" type="CollisionShape2D" parent="."]
+position = Vector2(0, 8)
+shape = SubResource("CapsuleShape2D_1bigl")
+
+[node name="CoyoteTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="JumpBufferTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="DashBufferTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="DashCooldown" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[node name="DashDuration" type="Timer" parent="."]
+wait_time = 0.058
+one_shot = true
+
+[node name="DashDecelTime" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="AttackDuration" type="Timer" parent="."]
+wait_time = 0.128
+one_shot = true
+
+[node name="BlackModeDuration" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="FishPoint" type="Node2D" parent="."]
+position = Vector2(0, -22)
+
+[node name="BlackFishSprite" type="Sprite2D" parent="FishPoint"]
+visible = false
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(0, -42)
+scale = Vector2(0.438, 0.438)
+texture = ExtResource("14_qhhle")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(-3, 6)
+scale = Vector2(0.432374, 0.432374)
+sprite_frames = SubResource("SpriteFrames_i7d7g")
+animation = &"runningsword"
+autoplay = "idle"
+frame_progress = 0.738606
+
+[node name="PlayerHitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox"]
+position = Vector2(0, 7)
+shape = SubResource("CapsuleShape2D_nl6ug")
+
+[node name="AttackHitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackHitbox"]
+position = Vector2(36, -8)
+shape = SubResource("CircleShape2D_kqtmr")
